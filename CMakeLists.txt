@@ -14,6 +14,8 @@ project(PythonQt)
 #----------------------------------------------------------------------------
 # Qt version
 
+add_definitions(-DQT_NO_SSL)
+
 # Sanity checks
 if(DEFINED Qt5_DIR AND DEFINED QT_QMAKE_EXECUTABLE)
   message(FATAL_ERROR
@@ -40,9 +42,12 @@ set(minimum_required_qt4_version "4.6.2")
 set(minimum_required_qt_version ${minimum_required_qt${PythonQt_QT_VERSION}_version})
 
 # Qt components
-set(qt5libs Core Widgets Network OpenGL Sql Svg UiTools WebKitWidgets Xml XmlPatterns)
-set(qt4libs core gui network opengl sql svg uitools webkit xml xmlpatterns)
+#set(qt5libs Core Widgets Network OpenGL Sql Svg UiTools WebKitWidgets Xml XmlPatterns)
+set(qt5libs Core Widgets Network OpenGL Sql Svg UiTools Xml XmlPatterns)
+
+set(qt4libs core gui network opengl sql svg uitools xml xmlpatterns)
 set(qtlibs ${qt${PythonQt_QT_VERSION}libs})
+
 
 #-----------------------------------------------------------------------------
 # Python libraries
@@ -80,7 +85,7 @@ set(qt4_wrapped_libs ${qt4libs})
 set(qt5_wrapped_libs ${qt4libs})
 set(qt_wrapped_libs ${qt${PythonQt_QT_VERSION}_wrapped_libs})
 
-set(qt5_wrapped_lib_depends_gui Multimedia)
+set(qt5_wrapped_lib_depends_gui Multimedia PrintSupport)
 
 set(qtlib_to_wraplib_Widgets gui)
 set(qtlib_to_wraplib_WebKitWidgets webkit)
@@ -124,7 +129,7 @@ endif()
 
 #-----------------------------------------------------------------------------
 # Setup Qt
-
+    
 if(PythonQt_QT_VERSION VERSION_GREATER "4")
 
   # Required components
@@ -355,6 +360,7 @@ install(TARGETS PythonQt
         LIBRARY DESTINATION ${PythonQt_INSTALL_LIBRARY_DIR}
         ARCHIVE DESTINATION ${PythonQt_INSTALL_ARCHIVE_DIR})
 install(FILES ${headers} DESTINATION ${PythonQt_INSTALL_INCLUDE_DIR})
+install(FILES src/gui/PythonQtScriptingConsole.h DESTINATION ${PythonQt_INSTALL_INCLUDE_DIR}/gui)
 
 #-----------------------------------------------------------------------------
 # Testing

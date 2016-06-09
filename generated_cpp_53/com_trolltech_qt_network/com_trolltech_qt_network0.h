@@ -604,7 +604,11 @@ void delete_QNetworkAccessManager(QNetworkAccessManager* obj) { delete obj; }
    void clearAccessCache(QNetworkAccessManager* theWrappedObject);
    QNetworkConfiguration  configuration(QNetworkAccessManager* theWrappedObject) const;
    void connectToHost(QNetworkAccessManager* theWrappedObject, const QString&  hostName, unsigned short  port = 80);
+
+   // .alex.
+#ifndef QT_NO_OPENSSL
    void connectToHostEncrypted(QNetworkAccessManager* theWrappedObject, const QString&  hostName, unsigned short  port = 443, const QSslConfiguration&  sslConfiguration = QSslConfiguration::defaultConfiguration());
+#endif
    QNetworkCookieJar*  cookieJar(QNetworkAccessManager* theWrappedObject) const;
    QNetworkReply*  createRequest(QNetworkAccessManager* theWrappedObject, QNetworkAccessManager::Operation  op, const QNetworkRequest&  request, QIODevice*  outgoingData = 0);
    QNetworkReply*  deleteResource(QNetworkAccessManager* theWrappedObject, const QNetworkRequest&  request);

@@ -1,0 +1,3 @@
+
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../../../../neutrino/resources/cmake/Toolchain-i686-mingw32.cmake -DNEUTRINO_CROSS_ROOT=/home/alex/DEVEL/NEUTRINO/CROSS-SOURCES -DPythonQt_Wrap_QtAll=ON -DCMAKE_INSTALL_PREFIX=/home/alex/DEVEL/NEUTRINO/CROSS-SOURCES
+

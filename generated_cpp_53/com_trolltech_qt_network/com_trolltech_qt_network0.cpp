@@ -3119,10 +3119,13 @@ void PythonQtWrapper_QNetworkAccessManager::connectToHost(QNetworkAccessManager*
   ( theWrappedObject->connectToHost(hostName, port));
 }
 
+// .alex.
+#ifndef QT_NO_OPENSSL
 void PythonQtWrapper_QNetworkAccessManager::connectToHostEncrypted(QNetworkAccessManager* theWrappedObject, const QString&  hostName, unsigned short  port, const QSslConfiguration&  sslConfiguration)
 {
   ( theWrappedObject->connectToHostEncrypted(hostName, port, sslConfiguration));
 }
+#endif
 
 QNetworkCookieJar*  PythonQtWrapper_QNetworkAccessManager::cookieJar(QNetworkAccessManager* theWrappedObject) const
 {

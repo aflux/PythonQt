@@ -3,9 +3,7 @@ DEFINES +=  PYTHONQT_EXPORTS
 INCLUDEPATH += $$PWD
 
 # This was needed to work around "number of sections exceeded object file format limit" linker error
-
-# .alex. - generates error when xcompile
-#win32:QMAKE_CXXFLAGS += /bigobj
+win32:QMAKE_CXXFLAGS += /bigobj
 
 HEADERS +=                    \
   $$PWD/PythonQt.h                  \
