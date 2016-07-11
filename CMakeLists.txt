@@ -14,7 +14,9 @@ project(PythonQt)
 #----------------------------------------------------------------------------
 # Qt version
 
-add_definitions(-DQT_NO_SSL)
+if (WIN32)
+	add_definitions(-DQT_NO_SSL)
+endif()
 
 # Sanity checks
 if(DEFINED Qt5_DIR AND DEFINED QT_QMAKE_EXECUTABLE)
